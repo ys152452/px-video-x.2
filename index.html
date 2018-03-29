@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./css/px-video.css" />
+</head>
+<style>
+  .aaa {
+    display: none;
+    position: fixed;
+    left: 200px;
+    top: 200px;
+    width: auto;
+    height: auto;
+  }
+
+  .px-video-captions.js-fullscreen-captions {
+    background: transparent;
+  }
+</style>
+
+<body>
+  <button onclick="dialog()">dialog</button>
+  <div class="aaa">
+    <button onclick="closeD()">X</button>
+    <div class="px-video-container videoplay" id="myvid">
+      <div class="px-video-img-captions-container">
+        <div class="px-video-captions hide"></div>
+        <video width="640" height="360" controls>
+          <source src="https://www.paypalobjects.com/webstatic/mktg/videos/PayPal_AustinSMB_baseline.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="px-video-controls"></div>
+    </div>
+  </div>
+</body>
+<script src="./js/strings.js"></script>
+<script src="./js/px-video.js"></script>
+<script type="text/javascript" src="./js/jquery-2.1.0.js"></script>
+<script>
+  new InitPxVideo({
+    "videoId": "myvid",
+    "captionsOnDefault": true,
+    "seekInterval": 20
+  });
+
+  function dialog() {
+    $('.aaa').show()
+  }
+
+  function closeD() {
+    console.log($('#myvid video'));
+    $('#myvid video')[0].pause()
+    $('.aaa').hide()
+  }
+</script>
+
+</html>
